@@ -1,0 +1,8 @@
+% layout 'default';
+<%= form_for sendurl => (method => 'post') => begin %>
+    <h1><a href="/">1nw.eu</a> URL shortener</h1>
+    <p>URL :
+    <%= text_field 'submit_url' %> 
+    <%= submit_button 'Shorten' %>
+    </p>
+<% end %>
