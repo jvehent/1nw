@@ -1,8 +1,15 @@
 % layout 'default';
+<div id="central">
 <%= form_for sendurl => (method => 'post') => begin %>
-    <h1><a href="/">1nw.eu</a> URL shortener</h1>
-    <p>URL :
-    <%= text_field 'submit_url' %> 
-    <%= submit_button 'Shorten' %>
-    </p>
+    <img src="lnwcrab.gif" width=100 />
+    <h1><a href="/">1nw.eu URL Shortener</a></h1>
+    <table><tr><td>
+        <p>URL :
+            <%= text_field 'orig_url' %><br /></p>
+    </td></tr><tr><td>
+        <p>
+        <%= submit_button 'Submit' %>
+        </p>
+    </td></tr></table>
 <% end %>
+</div>

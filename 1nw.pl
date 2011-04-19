@@ -4,11 +4,11 @@
 # jve - 2011
 
 use lib 'lib';
-use strict;
-use warnings;
 use Mojolicious::Lite;
 use OneNW;
 use Data::Dumper;
+
+
 app->helper(log_req => sub {
     my $self  = shift;
     my $method = $self->req->method;
@@ -22,9 +22,8 @@ app->helper(log_req => sub {
 get '/' => sub { 
     my $self = shift;
 
-    my $log = $self->log_req;
-    app->log->debug($log);
-
+    app->log->error($self->log_req);
+    app->log->error(Dumper($self->stash));
     return $self->render;
 } => 'index';
 
@@ -33,8 +32,7 @@ get '/' => sub {
 post '/sendurl' => sub {
     my $self = shift;
 
-    my $log = $self->log_req;
-    app->log->debug($log);
+    app->log->error($self->log_req);
 
     # check url validity
     my $url =  Mojo::URL->new($self->param('submit_url'));
@@ -45,6 +43,7 @@ post '/sendurl' => sub {
 
     return $self->redirect_to('index') if ($short_url eq "-1");
 
+    
     return $self->render('confirm', shortened => $short_url, host=>$self->req->url->base->host, port=>$self->req->url->base->port);
 };
 
@@ -52,8 +51,7 @@ post '/sendurl' => sub {
 get '/:shorturl' => ([shorturl => qr/\![a-zA-Z0-9]+/]) => sub {
     my $self = shift;
  
-    my $log = $self->log_req;
-    app->log->debug($log);
+    app->log->error($self->log_req);
     
     my $redirect_url = OneNW->get_url($self->param('shorturl'));
     if($redirect_url ne "-1"){
@@ -62,5 +60,5 @@ get '/:shorturl' => ([shorturl => qr/\![a-zA-Z0-9]+/]) => sub {
     return $self->redirect_to('index');
 };
 
-$ENV{MOJO_APP} ||= 'OneNW';
+plugin 'json_config';
 app->start;

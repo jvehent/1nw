@@ -1,5 +1,8 @@
-<!doctype html><html>
-    <head><title>1nw.eu</title></head>
+<!doctype html>
+<html>
+    <head>
+        <title>1nw.eu</title>
+        <link type="text/css" rel="stylesheet" media="all" href="style.css" />
+    </head>
     <body><%= content %></body>
 </html>
-

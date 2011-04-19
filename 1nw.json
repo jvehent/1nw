@@ -1,3 +1,4 @@
 {
+    "site_name" : "1nw.eu URL Shortener",
     "storage_file" : "data/storage.txt"
 }

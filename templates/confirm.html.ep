@@ -1,10 +1,12 @@
 % layout 'default';
-    <h1><a href="/">1nw.eu</a> URL shortener</h1>
-    <p>Your URL has been registered</p><br>
+<div id="central">
+    <img src="lnwcrab.gif" width=100 />
+    <h1><a href="/"><%=$host%></a></h1>
+    <p>Your address has been registered</p><br>
     <% if ($port == 80) { %>
-        <p>Short URL : <a href="http://<%=$host%>/<%=$shortened%>">http://<%=$host%>/<%=$shortened%></a></p><br>
+        <p>Short URL: <a href="http://<%=$host%>/<%=$shortened%>">http://<%=$host%>/<%=$shortened%></a></p><br>
     <%} else { %>
-        <p>Short URL : <a href="http://<%=$host%>:<%=$port%>/<%=$shortened%>">http://<%=$host%>:<%=$port%>/<%=$shortened%></a></p><br>
+        <p>Short URL: <a href="http://<%=$host%>:<%=$port%>/<%=$shortened%>">http://<%=$host%>:<%=$port%>/<%=$shortened%></a></p><br>
     <% } %>
-    <a href="/">home</a>
-    
+    <a href="/">go back</a>
+</div>
