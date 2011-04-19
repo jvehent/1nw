@@ -35,11 +35,11 @@ post '/sendurl' => sub {
     app->log->error($self->log_req);
 
     # check url validity
-    my $url =  Mojo::URL->new($self->param('submit_url'));
+    my $url =  Mojo::URL->new($self->param('orig_url'));
     if(!$url->is_abs){
         return $self->redirect_to('index');
     }
-    my $short_url = OneNW->store_url($self->param('submit_url'));
+    my $short_url = OneNW->store_url($self->param('orig_url'));
 
     return $self->redirect_to('index') if ($short_url eq "-1");
 
